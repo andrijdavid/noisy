@@ -128,9 +128,7 @@ class Crawler(object):
         :param root_url: the root URL of the given body
         :return: list of extracted links
         """
-        pattern = (
-            r"href=[\"'](?!#)(.*?)[\"'].*?"
-        )  # ignore links starting with #, no point in re-visiting the same page
+        pattern = r"href=[\"'](?!#)(.*?)[\"'].*?"  # ignore links starting with #, no point in re-visiting the same page
         urls = re.findall(pattern, str(body))
 
         normalize_urls = [self._normalize_link(url, root_url) for url in urls]
@@ -174,8 +172,7 @@ class Crawler(object):
 
             # sleep for a random amount of time
             time.sleep(
-                random.randrange(
-                    self._config["min_sleep"], self._config["max_sleep"])
+                random.randrange(self._config["min_sleep"], self._config["max_sleep"])
             )
 
             # make sure we have more than 1 link to pick from
@@ -268,13 +265,11 @@ class Crawler(object):
 
             except MemoryError:
                 logging.warning(
-                    "Error: content at url: {} is exhausting the memory".format(
-                        url)
+                    "Error: content at url: {} is exhausting the memory".format(url)
                 )
 
             except LocationParseError:
-                logging.warning(
-                    "Error encountered during parsing of: {}".format(url))
+                logging.warning("Error encountered during parsing of: {}".format(url))
 
             except self.CrawlerTimedOut:
                 logging.info("Timeout has exceeded, exiting")
