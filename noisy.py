@@ -92,7 +92,8 @@ class Crawler(object):
         """
         regex = re.compile(
             r"^(?:http|ftp)s?://"  # http:// or https://
-            r"(?:(?:[A-Z0-9](?:[A-Z0-9-]{0,61}[A-Z0-9])?\.)+(?:[A-Z]{2,6}\.?|[A-Z0-9-]{2,}\.?)|"  # domain...
+            # domain...
+            r"(?:(?:[A-Z0-9](?:[A-Z0-9-]{0,61}[A-Z0-9])?\.)+(?:[A-Z]{2,6}\.?|[A-Z0-9-]{2,}\.?)|"
             r"\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3})"  # ...or ip
             r"(?::\d+)?"  # optional port
             r"(?:/?|[/?]\S+)$",
@@ -173,7 +174,8 @@ class Crawler(object):
 
             # sleep for a random amount of time
             time.sleep(
-                random.randrange(self._config["min_sleep"], self._config["max_sleep"])
+                random.randrange(
+                    self._config["min_sleep"], self._config["max_sleep"])
             )
 
             # make sure we have more than 1 link to pick from
@@ -266,11 +268,13 @@ class Crawler(object):
 
             except MemoryError:
                 logging.warning(
-                    "Error: content at url: {} is exhausting the memory".format(url)
+                    "Error: content at url: {} is exhausting the memory".format(
+                        url)
                 )
 
             except LocationParseError:
-                logging.warning("Error encountered during parsing of: {}".format(url))
+                logging.warning(
+                    "Error encountered during parsing of: {}".format(url))
 
             except self.CrawlerTimedOut:
                 logging.info("Timeout has exceeded, exiting")
