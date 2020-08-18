@@ -14,4 +14,3 @@ install-systemd-service:
 
 help:
 	python noisy.py --help
-

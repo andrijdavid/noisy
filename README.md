@@ -1,16 +1,19 @@
-
 # Noisy
+
 [![CircleCI](https://circleci.com/gh/1tayH/noisy/tree/master.svg?style=shield)](https://circleci.com/gh/1tayH/noisy/tree/master)
 <a href="https://github.com/ambv/black"><img alt="Code style: black" src="https://img.shields.io/badge/code%20style-black-000000.svg"></a>
 
+A simple python script that generates random HTTP/DNS traffic noise in the
+background while you go about your regular web browsing, to make your web
+traffic data less valuable for selling and for extra obscurity.
 
-A simple python script that generates random HTTP/DNS traffic noise in the background while you go about your regular web browsing, to make your web traffic data less valuable for selling and for extra obscurity.
-
-Tested on MacOS High Sierra, Ubuntu 16.04 and Raspbian Stretch and is compatible with both Python 2.7 and 3.6
+Tested on MacOS High Sierra, Ubuntu 16.04 and Raspbian Stretch and is compatible
+with both Python 2.7 and 3.6
 
 ## Getting Started
 
-These instructions will get you a copy of the project up and running on your local machine
+These instructions will get you a copy of the project up and running on your
+local machine
 
 ### Dependencies
 
@@ -23,11 +26,13 @@ pip install requests
 ### Usage
 
 Clone the repository
+
 ```
 git clone https://github.com/1tayH/noisy.git
 ```
 
 Navigate into the `noisy` directory
+
 ```
 cd noisy
 ```
@@ -43,6 +48,7 @@ make run
 ```
 
 The program can accept a number of command line arguments:
+
 ```
 $ python noisy.py --help
 usage: noisy.py [-h] [--log -l] --config -c [--timeout -t]
@@ -53,9 +59,11 @@ optional arguments:
   --config -c   config file
   --timeout -t  for how long the crawler should be running, in seconds
 ```
+
 only the config file argument is required.
 
-###  Output
+### Output
+
 ```
 $ docker run -it noisy --config config.json --log debug
 DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 4chan.org:80
@@ -88,7 +96,8 @@ DEBUG:urllib3.connectionpool:https://www.reddit.com:443 "GET /user/Saditon HTTP/
 
 `docker build -t noisy .`
 
-**Or** if you'd like to build it for a **Raspberry Pi** (running Raspbian stretch):
+**Or** if you'd like to build it for a **Raspberry Pi** (running Raspbian
+stretch):
 
 `docker build -f Dockerfile.pi -t noisy .`
 
@@ -96,24 +105,29 @@ DEBUG:urllib3.connectionpool:https://www.reddit.com:443 "GET /user/Saditon HTTP/
 
 `docker run -it noisy --config config.json`
 
-To further simplify starting a few containers with noisy you can run `make scale=[num of containers] multi-run`.
+To further simplify starting a few containers with noisy you can run
+`make scale=[num of containers] multi-run`.
 
 ## Some examples
 
-Some edge-cases examples are available on the `examples` folder. You can read more there [examples/README.md](examples/README.md).
+Some edge-cases examples are available on the `examples` folder. You can read
+more there [examples/README.md](examples/README.md).
 
 ## Authors
 
-* **Itay Hury** - *Initial work* - [1tayH](https://github.com/1tayH)
+- **Itay Hury** - _Initial work_ - [1tayH](https://github.com/1tayH)
 
-See also the list of [contributors](https://github.com/1tayH/Noisy/contributors) who participated in this project.
+See also the list of [contributors](https://github.com/1tayH/Noisy/contributors)
+who participated in this project.
 
 ## License
 
-This project is licensed under the GNU GPLv3 License - see the [LICENSE.md](LICENSE.md) file for details
+This project is licensed under the GNU GPLv3 License - see the
+[LICENSE.md](LICENSE.md) file for details
 
 ## Acknowledgments
 
 This project has been inspired by
-* [RandomNoise](http://www.randomnoise.us)
-* [web-traffic-generator](https://github.com/ecapuano/web-traffic-generator)
+
+- [RandomNoise](http://www.randomnoise.us)
+- [web-traffic-generator](https://github.com/ecapuano/web-traffic-generator)
